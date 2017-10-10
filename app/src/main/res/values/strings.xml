@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SportsGuyAndroid</string>
+
+    <string-array name="modalidades">
+        <item>Basebol</item>
+        <item>Basquete</item>
+        <item>Boxe</item>
+        <item>Futsal</item>
+        <item>Futebol</item>
+        <item>Futebol Americano</item>
+        <item>Golfe</item>
+        <item>MMA</item>
+        <item>Tênis</item>
+        <item>Vôlei</item>
+    </string-array>
+</resources>
