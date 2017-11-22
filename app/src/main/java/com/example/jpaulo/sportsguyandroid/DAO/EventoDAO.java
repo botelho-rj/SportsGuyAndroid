@@ -26,7 +26,7 @@ public class EventoDAO {
 
     public long insereDado(Evento evento) {
         ContentValues valores;
-        long resultado;
+        long result;
 
         db = banco.getWritableDatabase();
         valores = new ContentValues();
@@ -35,17 +35,18 @@ public class EventoDAO {
         valores.put(BancoUtil.DATA_EVENTO, evento.getDtEvento());
         valores.put(BancoUtil.HORA_EVENTO, evento.getHrEvento());
 
-        resultado = db.insert(BancoUtil.TABELA_EVENTO, null, valores);
+        result = db.insert(BancoUtil.TABELA_EVENTO, null, valores);
         db.close();
 
-        return resultado;
+        return result;
 
     }
 
     public Evento carregaEventoPorID(int id){
         Cursor cursor;
+        String where;
         String[] campos = {BancoUtil.ID_EVENTO, BancoUtil.TITULO_EVENTO, BancoUtil.MODALIDADE_EVENTO, BancoUtil.DATA_EVENTO, BancoUtil.HORA_EVENTO};
-        String where = BancoUtil.ID_EVENTO + " = " + id;
+         where = BancoUtil.ID_EVENTO + " = " + id;
         db = banco.getReadableDatabase();
 
         cursor = db.query(BancoUtil.TABELA_EVENTO, campos, where, null, null, null , null, null);
@@ -54,13 +55,13 @@ public class EventoDAO {
         if(cursor != null){
             cursor.moveToFirst();
 
-            int ID = cursor.getInt(cursor.getColumnIndexOrThrow(BancoUtil.ID_EVENTO));
+            int idEvento = cursor.getInt(cursor.getColumnIndexOrThrow(BancoUtil.ID_EVENTO));
             String titulo = cursor.getString(cursor.getColumnIndexOrThrow(BancoUtil.TITULO_EVENTO));
             String modalidade = cursor.getString(cursor.getColumnIndexOrThrow(BancoUtil.MODALIDADE_EVENTO));
             String dta = cursor.getString(cursor.getColumnIndexOrThrow(BancoUtil.DATA_EVENTO));
             String hra = cursor.getString(cursor.getColumnIndexOrThrow(BancoUtil.HORA_EVENTO));
 
-            evento.setID(ID);
+            evento.setIdEvento(idEvento);
             evento.setTitulo(titulo);
             evento.setModalidade(modalidade);
             evento.setDtEvento(dta);
@@ -73,9 +74,8 @@ public class EventoDAO {
     }
 
 
-    public Cursor carregaDados(int idUser) {
+    public Cursor carregaDados() {
         Cursor cursor;
-        String where = BancoUtil.EVENTO_USUARIO +" "+ idUser;
         String[] campos = {BancoUtil.ID_EVENTO, BancoUtil.TITULO_EVENTO, BancoUtil.MODALIDADE_EVENTO, BancoUtil.DATA_EVENTO, BancoUtil.HORA_EVENTO};
         db = banco.getReadableDatabase();
 
@@ -88,10 +88,10 @@ public class EventoDAO {
         return cursor;
     }
 
-    public List<Evento> carregaDadosLista(int idUser) {
+    public List<Evento> carregaDadosLista() {
         Cursor cursor;
 
-        cursor = carregaDados(idUser);
+        cursor = carregaDados();
 
         List<Evento> eventos = new ArrayList<>();
 
@@ -99,13 +99,13 @@ public class EventoDAO {
             if(cursor.getCount() > 0) {
                 do {
                     Evento evento = new Evento();
-                    int ID = cursor.getInt(cursor.getColumnIndexOrThrow(BancoUtil.ID_EVENTO));
+                    int idEvento = cursor.getInt(cursor.getColumnIndexOrThrow(BancoUtil.ID_EVENTO));
                     String titulo = cursor.getString(cursor.getColumnIndexOrThrow(BancoUtil.TITULO_EVENTO));
                     String modalidade = cursor.getString(cursor.getColumnIndexOrThrow(BancoUtil.MODALIDADE_EVENTO));
                     String dtEvento = cursor.getString(cursor.getColumnIndexOrThrow(BancoUtil.DATA_EVENTO));
                     String hrEvento = cursor.getString(cursor.getColumnIndexOrThrow(BancoUtil.HORA_EVENTO));
 
-                    evento.setID(ID);
+                    evento.setIdEvento(idEvento);
                     evento.setTitulo(titulo);
                     evento.setModalidade(modalidade);
                     evento.setDtEvento(dtEvento);
@@ -132,7 +132,7 @@ public class EventoDAO {
 
     public boolean atualizarEvento(Evento evento){
         ContentValues valores = new ContentValues();
-        String where = BancoUtil.ID_EVENTO + " = "+ evento.getID();
+        String where = BancoUtil.ID_EVENTO + " = "+ evento.getIdEvento();
 
         db = banco.getWritableDatabase();
 

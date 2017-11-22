@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class Evento {
 
-    private int ID;
+    private int idEvento;
     private String titulo;
     private String modalidade;
     private String dtEvento;
@@ -19,8 +19,8 @@ public class Evento {
     public Evento() {
     }
 
-    public Evento(int ID, String titulo, String modalidade, String dtEvento, String hrEvento) {
-        this.ID = ID;
+    public Evento(int idEvento, String titulo, String modalidade, String dtEvento, String hrEvento) {
+        this.idEvento = idEvento;
         this.titulo = titulo;
         this.modalidade = modalidade;
         this.dtEvento = dtEvento;
@@ -28,9 +28,9 @@ public class Evento {
 
     }
 
-    public int getID() {return ID;}
+    public int getIdEvento() {return idEvento;}
 
-    public void setID(int ID) {this.ID = ID;}
+    public void setIdEvento(int idEvento) {this.idEvento = idEvento;}
 
     public String getTitulo() {
         return titulo;

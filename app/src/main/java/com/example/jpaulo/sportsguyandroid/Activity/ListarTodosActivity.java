@@ -36,15 +36,15 @@ public class ListarTodosActivity extends Activity{
     public void carregarElementos(){
         listaEventos = (ListView) findViewById(R.id.listaEventos);
         EventoDAO eventoDAO = new EventoDAO(this);
-        List<Evento> eventos = eventoDAO.carregaDadosLista(MainActivity.usuarioLogado.getID());
+        List<Evento> eventos = eventoDAO.carregaDadosLista();
         myAdapter = new EventoAdapter(this, R.layout.item_evento, eventos);
         listaEventos.setAdapter(myAdapter);
         listaEventos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Evento evento = (Evento)parent.getItemAtPosition(position);
-                Intent atualizarIntent = new Intent(ListarTodosActivity.this,AtualizarEventosActivity.class);
-                atualizarIntent.putExtra("ID_EVENTO",evento.getID());
+                Intent atualizarIntent = new Intent(ListarTodosActivity.this, AtualizarEventosActivity.class);
+                atualizarIntent.putExtra("ID_EVENTO",evento.getIdEvento());
                 startActivity(atualizarIntent);
             }
         });

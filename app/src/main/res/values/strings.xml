@@ -2,7 +2,7 @@
     <string name="app_name">SportsGuyAndroid</string>
 
     <string-array name="modalidades">
-        <item> - </item>
+        <item>Modalidade</item>
         <item>Basebol</item>
         <item>Basquete</item>
         <item>Boxe</item>
