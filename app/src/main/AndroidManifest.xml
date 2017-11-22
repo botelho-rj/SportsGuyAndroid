@@ -9,17 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".Activity.MainActivity"/>
+        <activity android:name=".Activity.AtualizarEventosActivity"/>
+        <activity android:name=".Activity.ListarTodosActivity" />
+        <activity android:name=".Activity.CadastrarEventoActivity" />
+        <activity android:name=".Activity.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.ListarTodosActivity" />
-        <activity android:name=".Activity.CadastrarEventoActivity" />
-        <activity android:name=".Activity.LoginActivity" />
-        <activity android:name=".Activity.AtualizarEventosActivity"></activity>
+        <activity android:name=".Activity.RegistroActivity" />
     </application>
 
 </manifest>

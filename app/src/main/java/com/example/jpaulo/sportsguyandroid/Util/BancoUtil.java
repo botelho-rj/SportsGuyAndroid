@@ -13,6 +13,8 @@ public class BancoUtil {
     public static final String MODALIDADE_EVENTO = "modalidade";
     public static final String DATA_EVENTO = "dtEvento";
     public static final String HORA_EVENTO = "hrEvento";
+    public static final String EVENTO_USUARIO = "_idUsuario";
+
 
     public static final String TABELA_USUARIO = "usuario";
     public static final String ID_USUARIO = "_id";
@@ -20,5 +22,5 @@ public class BancoUtil {
     public static final String SENHA_USUARIO = "senha";
 
 
-    public static final int VERSAO = 2;
+    public static final int VERSAO = 3;
 }

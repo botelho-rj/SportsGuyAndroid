@@ -73,8 +73,9 @@ public class EventoDAO {
     }
 
 
-    public Cursor carregaDados() {
+    public Cursor carregaDados(int idUser) {
         Cursor cursor;
+        String where = BancoUtil.EVENTO_USUARIO +" "+ idUser;
         String[] campos = {BancoUtil.ID_EVENTO, BancoUtil.TITULO_EVENTO, BancoUtil.MODALIDADE_EVENTO, BancoUtil.DATA_EVENTO, BancoUtil.HORA_EVENTO};
         db = banco.getReadableDatabase();
 
@@ -87,10 +88,10 @@ public class EventoDAO {
         return cursor;
     }
 
-    public List<Evento> carregaDadosLista() {
+    public List<Evento> carregaDadosLista(int idUser) {
         Cursor cursor;
 
-        cursor = carregaDados();
+        cursor = carregaDados(idUser);
 
         List<Evento> eventos = new ArrayList<>();
 

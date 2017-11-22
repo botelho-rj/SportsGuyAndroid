@@ -1,59 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.example.jpaulo.sportsguyandroid.Activity.AtualizarEventosActivity">
 
     <EditText
         android:id="@+id/tituloUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/spinner_modalidadeUpdate"
-        android:layout_marginTop="36dp"
-        android:hint="Título do Evento" />
+        android:hint="Título do Evento"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <Spinner
         android:id="@+id/spinner_modalidadeUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/modalidades"></Spinner>
-
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/tituloUpdate"
+        android:layout_alignParentStart="true"
+        android:entries="@array/modalidades">
+    </Spinner>
 
     <Button
         android:id="@+id/btn_dataUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Data" />
+        android:text="Data"
+        android:layout_marginBottom="24dp"
+        android:layout_above="@+id/text_horaUpdate"
+        android:layout_toStartOf="@+id/text_dataUpdate"
+        android:layout_marginEnd="15dp" />
 
     <Button
         android:id="@+id/btn_horaUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Horário" />
+        android:text="Horário"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/btn_dataUpdate" />
 
     <EditText
         android:id="@+id/text_dataUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName" />
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginEnd="27dp"
+        android:layout_alignBaseline="@+id/btn_dataUpdate"
+        android:layout_alignBottom="@+id/btn_dataUpdate"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:id="@+id/text_horaUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName" />
+        android:layout_alignBottom="@+id/btn_horaUpdate"
+        android:layout_alignEnd="@+id/text_dataUpdate"
+        android:ems="10"
+        android:inputType="textPersonName"/>
 
     <Button
         android:id="@+id/btn_atualizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/btn_horaUpdate"
+        android:layout_marginBottom="78dp"
+        android:layout_marginStart="29dp"
         android:onClick="atualizarEvento"
         android:text="Atualizar" />
 
+    <Button
+        android:id="@+id/btn_remover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_atualizar"
+        android:layout_alignBottom="@+id/btn_atualizar"
+        android:layout_marginStart="45dp"
+        android:layout_toEndOf="@+id/btn_atualizar"
+        android:onClick="removerEvento"
+        android:text="Remover" />
 
-</LinearLayout>
+
+</RelativeLayout>

@@ -1,5 +1,6 @@
 package com.example.jpaulo.sportsguyandroid.Activity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -22,7 +23,7 @@ import com.example.jpaulo.sportsguyandroid.R;
 
 import java.util.Calendar;
 
-public class AtualizarEventosActivity extends AppCompatActivity implements View.OnClickListener {
+public class AtualizarEventosActivity extends Activity {
 
     private int ID_EVENTO;
     private EventoDAO eventoDAO;
@@ -59,8 +60,8 @@ public class AtualizarEventosActivity extends AppCompatActivity implements View.
         tData = (EditText) findViewById(R.id.text_data);
         bHora = (Button) findViewById(R.id.btn_hora);
         tHora = (EditText) findViewById(R.id.text_hora);
-        bData.setOnClickListener(this);
-        bHora.setOnClickListener(this);
+        bData.setOnClickListener((View.OnClickListener) this);
+        bHora.setOnClickListener((View.OnClickListener) this);
 
         tTitulo.setText(evento.getTitulo());
         selectSpinnerItemByValue(spinnerModalidade, evento.getModalidade());
@@ -107,7 +108,6 @@ public class AtualizarEventosActivity extends AppCompatActivity implements View.
         finish();
     }
 
-    @Override
     public void onClick(View v) {
         if(v == bData){
             final Calendar c = Calendar.getInstance();

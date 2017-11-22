@@ -2,28 +2,45 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.jpaulo.sportsguyandroid.Activity.MainActivity">
 
 
+    <TextView
+        android:onClick="fazerLogout"
+        android:text="Logout"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <Button
-        android:onClick="menuPrincipal"
-        android:id="@+id/btn_lista_completa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="99dp"
-        android:text="Lista Completa" />
-
-    <Button
-        android:onClick="menuPrincipal"
         android:id="@+id/btn_cadastrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_lista_completa"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
+        android:onClick="menuPrincipal"
         android:text="Cadastrar" />
+
+    <Button
+        android:id="@+id/btn_lista_completa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="99dp"
+        android:onClick="menuPrincipal"
+        android:text="Lista Completa" />
+
+    <TextView
+        android:id="@+id/textWelcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="25dp"
+        android:textSize="25sp" />
+
 </RelativeLayout>
