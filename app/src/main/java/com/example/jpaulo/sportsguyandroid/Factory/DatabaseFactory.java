@@ -18,18 +18,27 @@ public class DatabaseFactory extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String  sql = "CREATE TABLE "+ BancoUtil.TABELA_EVENTO+"("
-                + BancoUtil.ID_EVENTO+ " integer primary key autoincrement,"
+        /*String  sql = "CREATE TABLE "+ BancoUtil.TABELA_USUARIO+"("
+                + BancoUtil.ID_USUARIO+ " integer primary key autoincrement,"
+                + BancoUtil.LOGIN_USUARIO + " text,"
+                + BancoUtil.SENHA_USUARIO + " text"
+                +")";
+        db.execSQL(sql);
+        */
+
+        String sql = "CREATE TABLE "+ BancoUtil.TABELA_EVENTO+"("
+                + BancoUtil.ID_EVENTO + " integer primary key autoincrement,"
                 + BancoUtil.TITULO_EVENTO + " text,"
                 + BancoUtil.MODALIDADE_EVENTO + " text,"
                 + BancoUtil.DATA_EVENTO + " text,"
-                + BancoUtil.HORA_EVENTO + "text)";
+                + BancoUtil.HORA_EVENTO + " text)";
         db.execSQL(sql);
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + BancoUtil.TABELA_USUARIO);
         db.execSQL("DROP TABLE IF EXISTS " + BancoUtil.TABELA_EVENTO);
 
         onCreate(db);

@@ -8,10 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.jpaulo.sportsguyandroid.Factory.DatabaseFactory;
 import com.example.jpaulo.sportsguyandroid.Util.BancoUtil;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,6 +41,37 @@ public class EventoDAO {
         return resultado;
 
     }
+
+    public Evento carregaEventoPorID(int id){
+        Cursor cursor;
+        String[] campos = {BancoUtil.ID_EVENTO, BancoUtil.TITULO_EVENTO, BancoUtil.MODALIDADE_EVENTO, BancoUtil.DATA_EVENTO, BancoUtil.HORA_EVENTO};
+        String where = BancoUtil.ID_EVENTO + " = " + id;
+        db = banco.getReadableDatabase();
+
+        cursor = db.query(BancoUtil.TABELA_EVENTO, campos, where, null, null, null , null, null);
+
+        Evento evento = new Evento();
+        if(cursor != null){
+            cursor.moveToFirst();
+
+            int ID = cursor.getInt(cursor.getColumnIndexOrThrow(BancoUtil.ID_EVENTO));
+            String titulo = cursor.getString(cursor.getColumnIndexOrThrow(BancoUtil.TITULO_EVENTO));
+            String modalidade = cursor.getString(cursor.getColumnIndexOrThrow(BancoUtil.MODALIDADE_EVENTO));
+            String dta = cursor.getString(cursor.getColumnIndexOrThrow(BancoUtil.DATA_EVENTO));
+            String hra = cursor.getString(cursor.getColumnIndexOrThrow(BancoUtil.HORA_EVENTO));
+
+            evento.setID(ID);
+            evento.setTitulo(titulo);
+            evento.setModalidade(modalidade);
+            evento.setDtEvento(dta);
+            evento.setHrEvento(hra);
+
+        }
+        db.close();
+        return evento;
+
+    }
+
 
     public Cursor carregaDados() {
         Cursor cursor;
@@ -90,6 +118,34 @@ public class EventoDAO {
         }
 
         return eventos;
+    }
+
+    public void deletaRegistro(int id){
+        String where = BancoUtil.ID_EVENTO + " = " + id;
+        db =  banco.getReadableDatabase();
+
+        db.delete(BancoUtil.TABELA_EVENTO,where,null);
+        db.close();
+    }
+
+
+    public boolean atualizarEvento(Evento evento){
+        ContentValues valores = new ContentValues();
+        String where = BancoUtil.ID_EVENTO + " = "+ evento.getID();
+
+        db = banco.getWritableDatabase();
+
+        valores.put(BancoUtil.TITULO_EVENTO, evento.getTitulo());
+        valores.put(BancoUtil.MODALIDADE_EVENTO, evento.getModalidade());
+        valores.put(BancoUtil.DATA_EVENTO, evento.getDtEvento());
+        valores.put(BancoUtil.HORA_EVENTO, evento.getHrEvento());
+
+        int result = db.update(BancoUtil.TABELA_EVENTO, valores, where, null);
+        db.close();
+        if(result >0)
+            return true;
+        else
+            return false;
     }
 
 }

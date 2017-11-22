@@ -11,19 +11,21 @@ public class Evento {
 
     private int ID;
     private String titulo;
+    private String modalidade;
     private String dtEvento;
     private String hrEvento;
-    private String modalidade;
+
 
     public Evento() {
     }
 
-    public Evento(int ID, String titulo, String dtEvento, String hrEvento, String modalidade) {
+    public Evento(int ID, String titulo, String modalidade, String dtEvento, String hrEvento) {
         this.ID = ID;
         this.titulo = titulo;
+        this.modalidade = modalidade;
         this.dtEvento = dtEvento;
         this.hrEvento = hrEvento;
-        this.modalidade = modalidade;
+
     }
 
     public int getID() {return ID;}

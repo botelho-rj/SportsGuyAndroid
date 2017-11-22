@@ -16,8 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.ListarTodosActivity"/>
-        <activity android:name=".Activity.CadastrarEventoActivity"></activity>
+        <activity android:name=".Activity.ListarTodosActivity" />
+        <activity android:name=".Activity.CadastrarEventoActivity" />
+        <activity android:name=".Activity.LoginActivity" />
+        <activity android:name=".Activity.AtualizarEventosActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.jpaulo.sportsguyandroid.Activity.AtualizarEventosActivity">
+
+    <EditText
+        android:id="@+id/tituloUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/spinner_modalidadeUpdate"
+        android:layout_marginTop="36dp"
+        android:hint="Título do Evento" />
+
+    <Spinner
+        android:id="@+id/spinner_modalidadeUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/modalidades"></Spinner>
+
+
+    <Button
+        android:id="@+id/btn_dataUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data" />
+
+    <Button
+        android:id="@+id/btn_horaUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Horário" />
+
+    <EditText
+        android:id="@+id/text_dataUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/text_horaUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btn_atualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:onClick="atualizarEvento"
+        android:text="Atualizar" />
+
+
+</LinearLayout>

@@ -23,6 +23,8 @@ public class EventoAdapter extends ArrayAdapter<Evento> {
 
     public EventoAdapter(Context context, int resource, List<Evento> objects) {
         super(context, resource, objects);
+        this.resource = resource;
+        eventos = objects;
     }
 
 
@@ -39,15 +41,21 @@ public class EventoAdapter extends ArrayAdapter<Evento> {
 
         TextView textTitulo = (TextView) mView.findViewById(R.id.titulo);
         TextView textData = (TextView) mView.findViewById(R.id.text_data);
+        TextView textModalidade = (TextView) mView.findViewById(R.id.textModalidade);
         TextView textHora = (TextView) mView.findViewById(R.id.text_hora);
 
         if(textTitulo != null){
             textTitulo.setText(evento.getTitulo());
         }
 
+        if(textModalidade != null){
+            textModalidade.setText(evento.getModalidade());
+        }
+
         if(textData != null){
             textData.setText(evento.getDtEvento());
         }
+
         if(textHora != null){
             textHora.setText(evento.getHrEvento());
         }

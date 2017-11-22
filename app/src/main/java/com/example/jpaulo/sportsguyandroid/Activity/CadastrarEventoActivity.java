@@ -6,6 +6,7 @@ package com.example.jpaulo.sportsguyandroid.Activity;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -100,6 +101,9 @@ public class CadastrarEventoActivity extends Activity implements View.OnClickLis
 
         if(resultado > 0){
             exibirMensagem("O Evento foi cadastro!");
+            Intent listarTodos = new Intent(CadastrarEventoActivity.this,ListarTodosActivity.class);
+            startActivity(listarTodos);
+            finish();
         }
         else{
             exibirMensagem("Erro ao cadastrar o Evento.");
