@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
         textWelcome = (TextView) findViewById(R.id.textWelcome);
 
         Intent result = getIntent();
-        int id = result.getIntExtra("ID_USUARIO",0);
+        long id = result.getLongExtra("ID_USUARIO",0);
         if(usuarioLogado == null)
             usuarioLogado = new UsuarioDAO(this).carregaUsuarioPorID(id);
 

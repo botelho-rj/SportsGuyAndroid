@@ -23,7 +23,7 @@ import com.example.jpaulo.sportsguyandroid.R;
 
 import java.util.Calendar;
 
-public class AtualizarEventosActivity extends Activity {
+public class AtualizarEventosActivity extends Activity implements View.OnClickListener {
 
     private int ID_EVENTO;
     private EventoDAO eventoDAO;
@@ -35,7 +35,6 @@ public class AtualizarEventosActivity extends Activity {
     private EditText tData;
     private Button bHora;
     private EditText tHora;
-    private Button finalizar;
     private int dia;
     private int mes;
     private int ano;
@@ -54,14 +53,14 @@ public class AtualizarEventosActivity extends Activity {
         eventoDAO = new EventoDAO(this);
         evento = eventoDAO.carregaEventoPorID(ID_EVENTO);
 
-        tTitulo = (EditText) findViewById(R.id.titulo);
-        spinnerModalidade = (Spinner) findViewById(R.id.spinner_modalidade);
-        bData = (Button) findViewById(R.id.btn_data);
-        tData = (EditText) findViewById(R.id.text_data);
-        bHora = (Button) findViewById(R.id.btn_hora);
-        tHora = (EditText) findViewById(R.id.text_hora);
-        bData.setOnClickListener((View.OnClickListener) this);
-        bHora.setOnClickListener((View.OnClickListener) this);
+        tTitulo = (EditText) findViewById(R.id.tituloUpdate);
+        spinnerModalidade = (Spinner) findViewById(R.id.spinner_modalidadeUpdate);
+        bData = (Button) findViewById(R.id.btn_dataUpdate);
+        tData = (EditText) findViewById(R.id.text_dataUpdate);
+        bHora = (Button) findViewById(R.id.btn_horaUpdate);
+        tHora = (EditText) findViewById(R.id.text_horaUpdate);
+        bData.setOnClickListener(this);
+        bHora.setOnClickListener(this);
 
         tTitulo.setText(evento.getTitulo());
         selectSpinnerItemByValue(spinnerModalidade, evento.getModalidade());
@@ -108,6 +107,7 @@ public class AtualizarEventosActivity extends Activity {
         finish();
     }
 
+    @Override
     public void onClick(View v) {
         if(v == bData){
             final Calendar c = Calendar.getInstance();
@@ -148,4 +148,5 @@ public class AtualizarEventosActivity extends Activity {
             }
         }
     }
+
 }
